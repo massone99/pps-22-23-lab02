@@ -26,11 +26,11 @@ class ExperimentationTest {
     assertTrue(neg(notEmptyPred)(testString))
 
   @Test def testGenericNeg(): Unit =
-    def genericIsInt[A](x : A): Boolean = x.isInstanceOf[Int]
+    def genericIsInt[A](x: A): Boolean = x.isInstanceOf[Int]
     val x = 20
     assertFalse(genericNeg(genericIsInt)(x))
 
-  @Test def testThernaryRelationCurried(): Unit =
+  @Test def testThernaryRelation(): Unit =
     val x = 1
     val y = 2
     val z = 2
@@ -39,6 +39,10 @@ class ExperimentationTest {
     assertTrue(thernaryRelationMethodCurried(x)(y)(z))
     assertTrue(thernaryRelationMethodUncurried(x, y, z))
 
-
+  @Test def testCompose(): Unit =
+    val f: Int => Int = _ + 1
+    val g: Int => Int = _ - 1
+    val x = 5
+    assertEquals(5, compose(f,g)(x))
 
 }

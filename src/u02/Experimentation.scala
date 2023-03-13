@@ -29,3 +29,6 @@ def thernaryRelationMethodCurried(x: Int)(y: Int)(z: Int): Boolean =
 
 def thernaryRelationMethodUncurried(x: Int, y: Int, z: Int): Boolean =
   x <= y && y == z
+
+val compose: (Int => Int, Int => Int) => Int => Int =
+  (f: Int => Int, g: Int => Int) => (x: Int) => f(g(x))
