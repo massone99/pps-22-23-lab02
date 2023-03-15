@@ -7,7 +7,15 @@ object Optionals extends App:
     case None() // here parens are needed because of genericity
 
   object Option:
-    def filter[A](opt: Option[Int])(prd: Int => Boolean): Option[Int] = opt match
+    def fold[A](opt: Option[A])(ifEmpty: => A)(f: A => A): A = opt match
+      case Some(a) => f(a)
+      case _ => ifEmpty
+
+    def map[A](opt: Option[A])(f: A => A): Option[A] = opt match
+      case Some(a) => Some(f(a))
+      case _ => None()
+
+    def filter[A](opt: Option[A])(prd: A => Boolean): Option[A] = opt match
       case Some(a) => prd(a) match
         case v if v => Some(a)
         case _ => None()
