@@ -8,7 +8,7 @@ import u02.ProductTypes.Point2D
 import u02.Shape.{contains, perimeter}
 import Option.*
 
-class ExperimentationTest {
+class TasksTest {
 
   val testString = "ciao"
   val notEmptyPred: (String => Boolean) = s => s.isEmpty
